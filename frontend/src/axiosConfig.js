@@ -1,4 +1,4 @@
 import axios from 'axios';
 
-//set base URL for axios requests based on environment
-axios.defaults.baseURL ='http://localhost:5001';
+axios.defaults.baseURL =
+  process.env.NODE_ENV !== 'production' ? 'http://localhost:5001' : '/';
