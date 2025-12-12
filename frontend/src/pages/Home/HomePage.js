@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Search from '../../components/Search/Search';
 import Tags from '../../components/Tags/Tags';
 import Thumbnails from '../../components/Thumbnails/Thumbnails';
@@ -11,6 +11,7 @@ import {
   toggleFavorite,
 } from '../../services/foodService';
 import NotFound from '../../components/NotFound/NotFound';
+import classes from './homePage.module.css';
 
 const initialState = { foods: [], tags: [] };
 
@@ -65,11 +66,42 @@ export default function HomePage() {
   };
 
   return (
-    <>
-      <Search />
-      <Tags tags={tags} />
-      {foods.length === 0 && <NotFound linkText="Reset Search" />}
-      <Thumbnails foods={foods} onToggleFavorite={handleFavoriteToggle} />
-    </>
+    <div className={classes.page}>
+      <div className={classes.shell}>
+        <section className={classes.hero}>
+          <div className={classes.hero_content}>
+            <p className={classes.eyebrow}>FoodoraX</p>
+            <h1>Chef-crafted food, delivered fresh and fast.</h1>
+            <p className={classes.subtitle}>
+              Explore curated meals, rate your favorites, and get them to your
+              door right on time.
+            </p>
+            <div className={classes.actions}>
+              <a className={classes.primary_btn} href="#browse">
+                Browse menu
+              </a>
+              <Link className={classes.secondary_btn} to="/login">
+                Sign in
+              </Link>
+            </div>
+          </div>
+          <div className={classes.hero_badge}>
+            <span>24/7 Delivery</span>
+            <span>Top-rated chefs</span>
+            <span>Secure checkout</span>
+          </div>
+        </section>
+
+        <section id="browse" className={classes.panel}>
+          <Search margin="0 auto 1rem auto" />
+          <Tags tags={tags} />
+        </section>
+
+        <section className={classes.results}>
+          {foods.length === 0 && <NotFound linkText="Reset Search" />}
+          <Thumbnails foods={foods} onToggleFavorite={handleFavoriteToggle} />
+        </section>
+      </div>
+    </div>
   );
 }
