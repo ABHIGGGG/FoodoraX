@@ -28,6 +28,13 @@ export const getById = async foodId => {
   return data;
 };
 
+export const toggleFavorite = async (foodId, favorite) => {
+  const { data } = await axios.patch('/api/foods/' + foodId + '/favorite', {
+    favorite,
+  });
+  return data;
+};
+
 export async function deleteById(foodId) {
   await axios.delete('/api/foods/' + foodId);
 }

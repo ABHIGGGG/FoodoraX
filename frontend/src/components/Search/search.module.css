@@ -7,30 +7,31 @@
 
 .container input {
   border-radius: 10rem 0 0 10rem;
-  border: none;
-  height: 3rem;
-  width: 20rem;
-  background-color: #f1f1f1;
+  border: 1px solid #e2e8f0;
+  height: 3.2rem;
+  width: 22rem;
+  background-color: #ffffff;
   padding: 1.2rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   outline: none;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
 }
 
 .container button {
-  color: grey;
-  height: 3rem;
-  width: 5rem;
+  height: 3.2rem;
+  width: 6.5rem;
   font-size: 1rem;
   border-radius: 0 10rem 10rem 0;
   border: none;
-  background-color: #e72929;
+  background: linear-gradient(120deg, #6366f1, #ef4444);
   color: white;
-  opacity: 0.8;
+  font-weight: 700;
   outline: none;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
 }
 
 .container button:hover {
-  opacity: 1;
+  opacity: 0.95;
   cursor: pointer;
 }

@@ -4,6 +4,7 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 3rem;
+  gap: 1.5rem;
 }
 
 .container > * {
@@ -26,8 +27,10 @@
   flex: 1 0;
   border-radius: 3rem;
   padding: 2rem;
-  color: black;
+  color: #0f172a;
   margin-left: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
 }
 
 .header {
@@ -41,12 +44,26 @@
 }
 
 .favorite {
-  color: #e72929;
-  font-size: 2.5rem;
+  color: #ef4444;
+  font-size: 2.2rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 }
 
 .favorite.not {
-  color: grey;
+  color: #94a3b8;
+}
+
+.favorite:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
 }
 
 .origins {
@@ -76,7 +93,7 @@
 .price {
   font-size: 1.8rem;
   margin: 2rem 2rem 2rem 0;
-  color: green;
+  color: #16a34a;
 }
 
 .price::before {
@@ -86,7 +103,7 @@
 
 .container button {
   color: white;
-  background-color: #e72929;
+  background: linear-gradient(120deg, #6366f1, #ef4444);
   border: none;
   font-size: 1.2rem;
   padding: 1rem;
@@ -95,6 +112,6 @@
 }
 
 .container button:hover {
-  opacity: 0.9;
+  opacity: 0.95;
   cursor: pointer;
 }

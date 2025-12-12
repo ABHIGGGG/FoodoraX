@@ -4,13 +4,14 @@ import Price from '../../components/Price/Price';
 import StarRating from '../../components/StarRating/StarRating';
 import Tags from '../../components/Tags/Tags';
 import { useCart } from '../../hooks/useCart';
-import { getById } from '../../services/foodService';
+import { getById, toggleFavorite } from '../../services/foodService';
 import classes from './foodPage.module.css';
 import NotFound from '../../components/NotFound/NotFound';
 
 //component to display food details
 export default function FoodPage() {
-  const [food, setFood] = useState({});
+  const [food, setFood] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const { addToCart } = useCart();
   const navigate = useNavigate();
@@ -21,11 +22,28 @@ export default function FoodPage() {
   };
 
   useEffect(() => {
-    getById(id).then(setFood);
+    getById(id)
+      .then(setFood)
+      .finally(() => setLoading(false));
   }, [id]);
+
+  const handleFavoriteToggle = async () => {
+    if (!food?.id) return;
+    try {
+      const updated = await toggleFavorite(food.id, !food.favorite);
+      setFood(updated);
+    } catch (error) {
+      console.error('Failed to toggle favorite', error);
+    }
+  };
+
+  if (loading) {
+    return null;
+  }
+
   return (
     <>
-      {!food ? (
+      {!food?.id && !loading ? (
         <NotFound message="Food Not Found!" linkText="Back To Homepage" />
       ) : (
         <div className={classes.container}>
@@ -38,13 +56,16 @@ export default function FoodPage() {
           <div className={classes.details}>
             <div className={classes.header}>
               <span className={classes.name}>{food.name}</span>
-              <span
+              <button
+                type="button"
                 className={`${classes.favorite} ${
                   food.favorite ? '' : classes.not
                 }`}
+                aria-label={food.favorite ? 'Unlike' : 'Like'}
+                onClick={handleFavoriteToggle}
               >
-                ❤
-              </span>
+                {food.favorite ? '♥' : '♡'}
+              </button>
             </div>
             <div className={classes.rating}>
               <StarRating stars={food.stars} size={25} />

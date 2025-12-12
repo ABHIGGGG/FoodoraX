@@ -62,6 +62,27 @@ router.put(
   })
 );
 
+//toggle favorite flag
+router.patch(
+  '/:foodId/favorite',
+  handler(async (req, res) => {
+    const { foodId } = req.params;
+    const { favorite } = req.body;
+
+    const updatedFood = await FoodModel.findByIdAndUpdate(
+      foodId,
+      { favorite },
+      { new: true }
+    );
+
+    if (!updatedFood) {
+      return res.status(404).send({ message: 'Food not found' });
+    }
+
+    res.send(updatedFood);
+  })
+);
+
 router.delete(
   '/:foodId',
   admin,

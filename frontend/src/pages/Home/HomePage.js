@@ -8,6 +8,7 @@ import {
   getAllByTag,
   getAllTags,
   search,
+  toggleFavorite,
 } from '../../services/foodService';
 import NotFound from '../../components/NotFound/NotFound';
 
@@ -21,6 +22,13 @@ const reducer = (state, action) => {
       return { ...state, foods: action.payload };
     case 'TAGS_LOADED':
       return { ...state, tags: action.payload };
+    case 'FAVORITE_UPDATED':
+      return {
+        ...state,
+        foods: state.foods.map(food =>
+          food.id === action.payload.id ? action.payload : food
+        ),
+      };
     default:
       return state;
   }
@@ -47,12 +55,21 @@ export default function HomePage() {
     loadFoods.then(foods => dispatch({ type: 'FOODS_LOADED', payload: foods }));
   }, [searchTerm, tag]);
 
+  const handleFavoriteToggle = async (foodId, nextFavorite) => {
+    try {
+      const updatedFood = await toggleFavorite(foodId, nextFavorite);
+      dispatch({ type: 'FAVORITE_UPDATED', payload: updatedFood });
+    } catch (error) {
+      console.error('Failed to toggle favorite', error);
+    }
+  };
+
   return (
     <>
       <Search />
       <Tags tags={tags} />
       {foods.length === 0 && <NotFound linkText="Reset Search" />}
-      <Thumbnails foods={foods} />
+      <Thumbnails foods={foods} onToggleFavorite={handleFavoriteToggle} />
     </>
   );
 }

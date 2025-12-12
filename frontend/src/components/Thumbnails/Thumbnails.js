@@ -6,13 +6,13 @@ import classes from './thumbnails.module.css';
 
 
 
-export default function Thumbnails({ foods }) {
+export default function Thumbnails({ foods, onToggleFavorite = () => {} }) {
   return (
     <ul className={classes.list}>
       {foods.map(food => (
 
-        <li key={food.id}>
-          <Link to={`/food/${food.id}`}>
+        <li key={food.id} className={classes.card}>
+          <Link to={`/food/${food.id}`} className={classes.link}>
 
             <img
               className={classes.image}
@@ -23,13 +23,20 @@ export default function Thumbnails({ foods }) {
             <div className={classes.content}>
 
               <div className={classes.name}>{food.name}</div>
-              <span
+              <button
+                type="button"
                 className={`${classes.favorite} ${
                   food.favorite ? '' : classes.not
                 }`}
+                aria-label={food.favorite ? 'Unlike' : 'Like'}
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  onToggleFavorite(food.id, !food.favorite);
+                }}
               >
-                ❤
-              </span>
+                {food.favorite ? '♥' : '♡'}
+              </button>
               <div className={classes.stars}>
                 <StarRating stars={food.stars} />
               </div>
