@@ -1,0 +1,7 @@
+//used to configure module resolution for backend JavaScript files
+{
+  "compilerOptions": {
+    "moduleResolution": "node"
+  },
+  "include": ["src"]
+}
