@@ -1,305 +1,139 @@
-# Lessons:
+# 🥗 **FoodoraX – Food Delivery Web App (MERN Stack)**
 
-## 1. Demo And Installation
+A full-stack food delivery application built with **React**, **Node.js**, **Express**, **MongoDB**, **Mongoose**, **Leaflet Maps**, and **PayPal Payments**.
 
-- [x] Install [NodeJs](https://nodejs.org/en)
-- [x] Install [Visual Studio Code](https://code.visualstudio.com)
-- [x] Install [Git](https://git-scm.com)
+FoodoraX allows users to browse food items, search, filter by tags, view details, manage cart, checkout, make payments, track orders on a live map, and update their profile.
 
-## 2. Creating React App
+---
 
-- [x] Create React App
-- [x] Remove Unnecessary Codes
+## 🚀 **Features**
 
-## 3. Adding Header
+### 🌟 **Frontend (React)**
 
-- [x] Add Header.js
-- [x] Use Header in App.js
-- [x] Install react-router-dom in frontend
-- [x] Add header.module.css
-- [x] Use BrowserRouter inside index.js
-- [x] Update Header.js
-- [x] Update header.module.css
+✔ Fully responsive UI
+✔ Modern component structure
+✔ Food thumbnails, ratings, tags & filters
+✔ Search & tag-based food filtering
+✔ Cart management (add/remove/quantity/save to localStorage)
+✔ Login / Register with JWT authentication
+✔ Checkout page with interactive map
+✔ Payment page with PayPal integration
+✔ Order tracking with live map
+✔ Profile management (update profile + change password)
+✔ Orders history page
+✔ Loading animations & interceptors
+✔ Protected routes with `AuthRoute`
 
-## 4. Adding Thumbnails
+---
 
-- [x] Add HomePage component
-- [x] Add AppRoutes component
-- [x] Use AppRoutes in App.js
-- [x] Add data.js
-- [x] Add food Images
-- [x] Add foodService.js
-- [x] Update HomePage.js
-  - [x] Add Reducer
-  - [x] Load foods
-  - [x] Add Thumbnails.js
-    - [x] Add CSS File
-    - [x] Add Image
-    - [x] Add Title
-    - [x] Add Favorite Icon
-    - [x] Add StarRating.js
-      - [x] Add Star Images
-      - [x] Add CSS
-    - [x] Add Origins
-    - [x] Add Cook Time
-    - [x] Add Price.js
-    - [x] Update CSS File
+### 🛠 **Backend (Node + Express)**
 
-## 5. Adding Search
+✔ Express REST APIs
+✔ MongoDB + Mongoose models
+✔ Authentication using JWT
+✔ User login, register, update profile, change password
+✔ Food APIs (all foods, tags, search, get by id)
+✔ Orders APIs (create order, get new order, pay, track)
+✔ Seed data for users & foods
+✔ Bcrypt for password hashing
+✔ Middleware: Auth, error handling, validation
+✔ ENV support with dotenv
 
-- [x] Add Search Route to AppRoutes.js
-- [x] Add Search function to foodService.js
-- [x] Use Search Inside HomePage.js
-- [x] Add Search Component
-  - [x] Add CSS
+---
 
-## 6.Adding Tags Bar
+### 💳 **Payments Integration**
 
-### Showing The Tags:
+✔ PayPal sandbox integrated
+✔ Payment verification
+✔ Auto-clear cart after successful payment
 
-- [x] Add sample_tags to data.js
-- [x] Add getAllTags function to foodService.js
-- [x] Add Tags Component
-  - [x] Add Css
-- [x] Use Tags Component in HomePage.js
+---
 
-### Showing Foods By Tag
+### 🗺 **Maps Integration**
 
-- [x] Add Tag route to AppRoutes.js
-- [x] Add getAllByTag function to foodService.js
-- [x] Use tag param in HomePage.js
+✔ Leaflet + React-Leaflet
+✔ Location selection during checkout
+✔ Location shown on Payment & Order Tracking
+✔ Fixed marker issues + custom map styling
 
-## 7. Food Page
+---
+## 📦 **Installation & Setup**
 
-- [x] Create FoodPage Component
-- [x] Add route to AppRoutes.js
-- [x] Add getById function to foodService.js
-- [x] Update FoodPage Component
-  - [x] Load food
-  - [x] Create Template
-  - [x] Add Css
+### 1️⃣ **Clone the repo**
 
-## 8. Cart Page
+```bash
+git clone https://github.com/ABHIGGGG/FoodoraX.git
+cd FoodoraX
+```
 
-- [x] Create Cart Page Component
-  - [x] Create css
-- [x] Add cart route to the Routes
-- [x] Create useCart Hook
-  - [x] Add CartProvider to index.js
-  - [x] Initialize cart with sample foods
-- [x] Update Cart Page Compnent
-  - [x] useCart hook
-  - [x] Add Title Component
-  - [x] Add JSX
-  - [x] Add CSS
-- [x] Update useCart Hook
-  - [x] Add to cart
-  - [x] Remove from cart
-  - [x] Change quantity
-  - [x] Saving To LocalStorage
-- [x] In Food Page useCart for Add to cart buttons
-- [x] In Header useCart for cart total count
+---
 
-## 9.Not Found!
+## 🔧 **Backend Setup**
 
-- [x] Create NotFound Component
-  - [x] Add CSS
-- [x] Add Not Found To:
-  - [x] Home Page
-  - [x] Food Page
-  - [x] Cart Page
-- [x] Fixing Search Issue
+```bash
+cd backend
+npm install
+```
 
-## 10. Connect To Backend
+Create `.env`:
 
-- [x] Create backend folder
-- [x] Initializing NPM Project
-- [x] Copy data.ts to backend/src
-- [x] npm install express cors
-- [x] Create .gitignore
-- [x] Create server.js
-  - [x] Add & Config Express
-    - [x] Add & Config Cors
-  - [x] Add Food Router
-    - [x] Add jsconfig.json
-    - [x] Add Apis
-- [x] npm install nodemon
-  - [x] Add dev Script into the package.json
-  - [x] npm run dev
-- [x] Add axios package
-  - [x] axiosConfig.js file
-- [x] Connect food service to the Apis
+```
+MONGO_URI=your_mongo_uri_here
+JWT_SECRET=your_secret_here
+PAYPAL_CLIENT_ID=your_paypal_id
+```
 
-## 11. Login Page
+Start backend:
 
-### Backend
+```bash
+npm run dev
+```
 
-- [x] Create User Router
-  - [x] npm install jsonwebtoken
-  - [x] Add Login Api
-    - [x] Add sample_users to data.js
-    - [x] Add httpStatus.js
-  - [x] Add generateTokenResponse function
-- [x] Add User Router To server.js
+---
 
-### Frontend
+## 🎨 **Frontend Setup**
 
-- [x] Create user service
-  - [x] Add getUser function
-  - [x] Add login function
-  - [x] Add logout function
-- [x] npm install react-toastify
-- [x] Create useAuth hook
-  - [x] Add user state
-  - [x] Add Login function
-  - [x] Add logout function
-- [x] Create LoginPage component
-  - [x] Add to AppRoutes.js
-  - [x] Create Custom Components
-    - [x] Input Container
-      - [x] CSS
-    - [x] Input
-      - [x] CSS
-    - [x] Button
-      - [x] CSS
-- [x] Add useAuth to the Header component
+```bash
+cd frontend
+npm install
+npm start
+```
 
-## 12. Connecting MongoDB
+This runs React on **[http://localhost:3000](http://localhost:3000)**
 
-### Installation
+---
+## 🧪 **Testing Payments (PayPal)**
 
-- [x] Install Mongo Db Community
-  - [x] Windows
-  - [x] Macos
+1. Create a PayPal Sandbox account
+2. Add clientId to `.env`
+3. Use PayPal sandbox buyer account for testing
 
-### Coding
+---
 
-- [x] Install mongoose
-  - [x] Add User Model
-  - [x] Add Food Model
-- [x] Add .env file
-  - [x] Install dotenv
-  - [x] Add MONGO_URI
-  - [x] Add to .gitignore
-- [x] Add database.config.js
-  - [x] Connect to mongodb
-  - [x] Seed Users
-    - [x] Install bcryptjs for password hashing
-  - [x] Seed Foods
-- [x] Update user.router ( Using UserModel)
-  - [x] Install express-async-handler
-  - [x] Login Api
-  - [x] generateTokenResponse
-- [x] Update food.router (Using FoodModel):
-  - [x] Root Api ( Loading all foods )
-  - [x] Tags api
-  - [x] Search Api
-  - [x] FoodId api ( Finding food by id )
-- [x] Fix Image url in:
-  - [x] Thumnails compnent
-  - [x] Food Page component
-  - [x] Cart Page component
+## 📜 **Scripts**
 
-## 13. Register Page
+### Frontend:
 
-- [x] Add Register Page Component
-  - [x] Add to AppRoutes
-  - [x] Add Link to login page
-  - [x] CSS
-- [x] Add '/register' api to user.router.js
-- [x] Add register function in userService
-- [x] Add register function in useAuth hook
-  - [x] Add to Register page
+```bash
+npm start
+npm run build
+```
 
-## 14. Loading
+### Backend:
 
-- [x] Create useLoading hook
-  - [x] Add LoadingProvider to index.js
-- [x] Create Loading component
-  - [x] Add to App.js
-  - [x] Add Image
-  - [x] CSS
-- [x] Create Loading Interceptor
+```bash
+npm run dev
+npm start
+```
 
-## 15. Checkout Page
+---
 
-- [x] Fixing Loading problem
-- [x] Create Checkout Page component
-  - [x] Create AuthRoute
-  - [x] Add to Routes
-  - [x] Add css
-  - [x] Create Order Items List
-  - [x] Create Maps Component
-    - [x] Install leaflet & react-leaflet
-    - [x] Adding images to public folder
-    - [x] Fixing header menu problem with map
-- [x] Create Order router
+## 🤝 **Contributing**
 
-  - [x] Create auth middleware
-    - [x] Add UNAUTHORIZED http statuss
-    - [x] Add to Order router
-  - [x] Create Order Model
-    - [x] Create Order Status
-  - [x] Add to server.js
+Pull requests are welcome! If you’d like to make major changes, open an issue first to discuss.
 
-- [x] Connecting Frontend to Backend
-  - [x] Create order service
-    - [x] Add create function
-  - [x] Create Auth interceptor
-    - [x] Add to index.js
+---
 
-## 16. Payment Page
+## 📄 **License**
 
-- [x] Create PaymentPage component
-  - [x] Add to Routes
-  - [x] CSS
-- [x] Update Order Router
-  - [x] Add newOrderForCurrentUser
-  - [x] Add pay api
-- [x] Create PaypalButtons Component
-  - [x] npm install @paypal/react-paypal-js
-  - [x] Add clearCart to useCart
-  - [x] Get clientId
-  - [x] Create Sandbox user for testing
-
-## 17. Order Track Page
-
-- [x] Create Order Track Page
-  - [x] Add To Routes
-  - [x] CSS
-  - [x] Create DateTime Component
-    - [x] Complete
-  - [x] Map
-    - [x] Fixing Marker Icon Issue
-  - [x] Complete
-- [x] Order Router
-  - [x] Add ‘track/:id’ api
-    - [x] Add to orderService
-
-## 18.Profile Page
-
-- [x] Create ProfilePage Component
-  - [x] CSS
-  - [x] Update Profile
-  - [x] ChangePassword component
-- [x] Update useAuth hook
-  - [x] Add updateProfile function
-  - [x] Add changePassword function
-- [x] Update userService
-  - [x] Add updateProfile funciton
-  - [x] Add changePassword function
-- [x] Update User Router
-  - [x] Add updateProfile api
-  - [x] Add changePassword api
-
-## 19. Orders Page
-
-- [x] Create Orders Page
-  - [x] Add To Routes
-  - [x] CSS
-- [x] Update Order Service
-  - [x] Add getAll function
-  - [x] Add getAllStatus function
-- [x] Update Order Router
-  - [x] Add `/:status?`
-  - [x] Add `/allStatus/:id`
+MIT License.
